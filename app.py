@@ -23,7 +23,7 @@ class InferlessPythonModel:
     def initialize(self):
         self.model_id = "google/gemma-3-27b-it"
         self.model = Gemma3ForConditionalGeneration.from_pretrained(
-            self.model_id, device_map="auto"
+            self.model_id, device_map="cuda"
         ).eval()
         self.processor = AutoProcessor.from_pretrained(self.model_id)
 
