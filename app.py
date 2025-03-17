@@ -17,6 +17,7 @@ class RequestObjects(BaseModel):
     repetition_penalty: Optional[float] = 1.18
     top_k: Optional[int] = 40
     max_tokens: Optional[int] = 100
+    do_sample: Optional[bool] = False
 
 @inferless.response
 class ResponseObjects(BaseModel):
@@ -63,7 +64,11 @@ class InferlessPythonModel:
             generation = self.model.generate(
                 **inputs,
                 max_new_tokens=request.max_tokens,
-                do_sample=False
+                temperature=request.temperature,
+                top_p=request.top_p,
+                top_k=request.top_k,
+                do_sample=request.do_sample,
+                repetition_penalty=request.repetition_penalty,
             )
             generation = generation[0][input_len:]
 
