@@ -1,0 +1,9 @@
+build:
+  cuda_version: "12.1.1"
+  python_packages:
+    - "git+https://github.com/huggingface/transformers@v4.49.0-Gemma-3"
+    - "hf-transfer==0.1.9"
+    - "inferless==0.2.13"
+    - "pydantic==2.10.2"
+    - "accelerate==1.5.2"
+    - "pillow==11.1.0"
