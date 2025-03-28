@@ -10,8 +10,8 @@ from transformers import AutoProcessor, Gemma3ForConditionalGeneration
 @inferless.request
 class RequestObjects(BaseModel):
     prompt: str = Field(default="Describe this image in detail.")
-    image_url: Optional[str] = "https://raw.githubusercontent.com/rbgo404/Files/main/dog.jpg"
-    system_prompt: Optional[str] = "You are a helpful assistant."
+    image_url: Optional[str] = Field(default="https://raw.githubusercontent.com/rbgo404/Files/main/dog.jpg")
+    system_prompt: Optional[str] = Field(default="You are a helpful assistant.")
     temperature: Optional[float] = 0.7
     top_p: Optional[float] = 0.1
     repetition_penalty: Optional[float] = 1.18
