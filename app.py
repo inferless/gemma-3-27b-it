@@ -33,10 +33,13 @@ class InferlessPythonModel:
         self.processor = AutoProcessor.from_pretrained(model_id)
 
     def infer(self, request: RequestObjects) -> ResponseObjects:
+        system_prompt = "You are a helpful assistant."
+        if request.system_prompt is not None:
+            system_prompt = request.system_prompt
         messages = [
             {
                 "role": "system",
-                "content": [{"type": "text", "text": request.system_prompt}]
+                "content": [{"type": "text", "text": system_prompt}]
             }
         ]
         # Build the user message based on provided inputs.
